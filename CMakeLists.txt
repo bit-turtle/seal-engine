@@ -21,5 +21,7 @@ if ( MSVC )
 	set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ENTRY:mainCRTStartup" )
 endif()
 
+# Create Game Executable
 add_executable( SealEngineGame WIN32 main.cpp engine.cpp glad/src/glad.c )
+# Link GLFW (Window and I/O Manager) and React Physics 3D (3D Physics Engine)
 target_link_libraries( SealEngineGame glfw reactphysics3d )
