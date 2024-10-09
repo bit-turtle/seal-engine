@@ -5,12 +5,16 @@ project( SealEngineGame )
 
 include_directories( ${OPENGL_INCLUDE_DIRS} )
 
+# GLFW
 set( GLFW_BUILD_DOCS OFF CACHE BOOL "GLFW lib only" )
 set( GLFW_INSTALL OFF CACHE BOOL "GLFW lib only" )
-
 add_subdirectory( glfw )
 
+# GLAD
 include_directories( glad/include )
+
+# React Physics 3D
+add_subdirectory( reactphysics3d )
 
 # Windows Specific Stuff
 if ( MSVC )
@@ -18,4 +22,4 @@ if ( MSVC )
 endif()
 
 add_executable( SealEngineGame WIN32 main.cpp engine.cpp glad/src/glad.c )
-target_link_libraries( SealEngineGame glfw )
+target_link_libraries( SealEngineGame glfw reactphysics3d )

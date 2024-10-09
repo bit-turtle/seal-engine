@@ -1,5 +1,5 @@
 # FrameSeal Engine [C++ Game Engine]
 Features:
-- 3D Sprites
-- Simple
-- Speedy
+- Simple Object System
+- 3D Physics
+- Efficient
