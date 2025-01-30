@@ -1,7 +1,8 @@
+# seal-engine CMakeLists.txt
+
 cmake_minimum_required( VERSION 3.5 )
 
-# Name of Game (If you change this change it everywhere in this file)
-project( SealEngineGame )
+project( seal-engine )
 
 include_directories( ${OPENGL_INCLUDE_DIRS} )
 
@@ -13,15 +14,13 @@ add_subdirectory( glfw )
 # GLAD
 include_directories( glad/include )
 
-# React Physics 3D
-add_subdirectory( reactphysics3d )
-
-# Windows Specific Stuff
+# Windows Specific Graphics Startup
 if ( MSVC )
 	set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ENTRY:mainCRTStartup" )
 endif()
 
-# Create Game Executable
-add_executable( SealEngineGame WIN32 main.cpp engine.cpp glad/src/glad.c )
-# Link GLFW (Window and I/O Manager) and React Physics 3D (3D Physics Engine)
-target_link_libraries( SealEngineGame glfw reactphysics3d )
+# Create Engine Executable
+include_directories( include )
+add_library( seal-engine src/engine.cpp glad/src/glad.c )
+# Link GLFW (Window and I/O Manager)
+target_link_libraries( seal-engine glfw )

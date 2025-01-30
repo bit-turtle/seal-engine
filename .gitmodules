@@ -1,6 +1,9 @@
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "reactphysics3d"]
-	path = reactphysics3d
-	url = https://github.com/DanielChappuis/reactphysics3d.git
+[submodule "magnum"]
+	path = magnum
+	url = https://github.com/mosra/magnum.git
+[submodule "corrade"]
+	path = corrade
+	url = https://github.com/mosra/corrade.git
