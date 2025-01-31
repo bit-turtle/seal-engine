@@ -1,9 +1,10 @@
-[submodule "glfw"]
-	path = glfw
-	url = https://github.com/glfw/glfw.git
 [submodule "magnum"]
 	path = magnum
 	url = https://github.com/mosra/magnum.git
 [submodule "corrade"]
 	path = corrade
 	url = https://github.com/mosra/corrade.git
+[submodule "SDL"]
+	path = SDL
+	url = https://github.com/libsdl-org/SDL.git
+	branch = SDL2

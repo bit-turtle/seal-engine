@@ -1,20 +1,17 @@
-# seal-engine CMakeLists.txt
+cmake_minimum_required(VERSION 3.5)
+project(MyApplication)
 
-cmake_minimum_required( VERSION 3.5..3.10 )
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/modules/" ${CMAKE_MODULE_PATH})
 
-project( seal-engine )
+# Add SDL2 as a subproject
+add_subdirectory( SDL )
 
-include_directories( ${OPENGL_INCLUDE_DIRS} )
+# Add Corrade as a subproject
+add_subdirectory(corrade EXCLUDE_FROM_ALL)
 
-# GLFW
-set( GLFW_BUILD_DOCS OFF CACHE BOOL "GLFW lib only" )
-set( GLFW_INSTALL OFF CACHE BOOL "GLFW lib only" )
-add_subdirectory( glfw )
-
-# Magnum
-set( CORRADE_BUILD_STATIC ON CACHE BOOL "Corrade as a Static Library" FORCE )
-add_subdirectory( corrade EXCLUDE_FROM_ALL )
-set( MAGNUM_BUILD_STATIC ON CACHE BOOL "Magnum as a Static Library" FORCE )
+# Add Magnum as a subproject, enable Sdl2Application
+set(CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/SDL2-2.30.9 ${CMAKE_PREFIX_PATH})
+set(MAGNUM_WITH_SDL2APPLICATION ON CACHE BOOL "" FORCE)
 set( MAGNUM_WITH_ANYIMAGEIMPORTER ON CACHE BOOL "Magnum AnyImageImporter" FORCE )
 set( MAGNUM_WITH_ANYSCENEIMPORTER ON CACHE BOOL "Magnum AnySceneImporter" FORCE )
 set( MAGNUM_WITH_GL ON CACHE BOOL "Magnum OpenGL" FORCE )
@@ -28,20 +25,6 @@ elseif( WIN32 )
 else()
 	message( FATAL_ERROR "No OpenGL Context Handler Available on this platform!" )
 endif()
-add_subdirectory( magnum EXCLUDE_FROM_ALL )
+add_subdirectory(magnum EXCLUDE_FROM_ALL)
 
-# Create Seal Engine Library
-include_directories( include )
-# Build Seal Engine Library
-add_library( seal-engine )
-add_subdirectory( src )
-# Link GLFW (Window and I/O Manager)
-target_link_libraries( seal-engine PRIVATE glfw )
-# Link Magnum (Graphics Library)
-target_link_libraries( seal-engine PRIVATE
-	Corrade::Main
-	Magnum::GL
-	GLContext
-	Magnum::Magnum
-	Magnum::Shaders
-)
+add_subdirectory(src)

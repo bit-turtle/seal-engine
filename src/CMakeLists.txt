@@ -1,7 +1,15 @@
-# seal-engine src CMakeLists.txt
+find_package(Magnum REQUIRED GL Sdl2Application)
 
-cmake_minimum_required( VERSION 3.5..3.10 )
+set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
-# Add all cpp files as sources for seal-engine
-file( GLOB SealEngineSourceFiles *.cpp )
-target_sources( seal-engine PRIVATE ${SealEngineSourceFiles} )
+add_executable(SealEngine SealEngine.cpp)
+target_link_libraries(SealEngine PRIVATE
+    Corrade::Main
+    Magnum::Application
+    Magnum::GL
+    Magnum::Magnum
+    Magnum::Shaders
+)
+
+# Make the executable a default target to build & run in Visual Studio
+set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SealEngine)
