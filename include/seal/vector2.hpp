@@ -9,6 +9,7 @@ public:
 	float x, y = 0;
 	// Vector2 Functions
 	Vector2(float xvalue, float yvalue);
+	Vector2() = default;
 };
 
 #endif	// SealEngineVector2

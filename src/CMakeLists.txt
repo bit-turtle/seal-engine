@@ -2,8 +2,17 @@ find_package(Magnum REQUIRED GL Sdl2Application)
 
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
-add_executable(SealEngine SealEngine.cpp)
-target_link_libraries(SealEngine PRIVATE
+if(NOT SealEngineGame)
+    set(SealEngineGame "SealEngineGame")
+endif()
+
+add_executable(${SealEngineGame} WIN32
+    SealEngine.cpp
+    vector2.cpp
+    sprite2d.cpp
+    shader.cpp
+)
+target_link_libraries(${SealEngineGame} PRIVATE
     Corrade::Main
     Magnum::Application
     Magnum::GL
@@ -12,4 +21,4 @@ target_link_libraries(SealEngine PRIVATE
 )
 
 # Make the executable a default target to build & run in Visual Studio
-set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SealEngine)
+set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${SealEngineGame})

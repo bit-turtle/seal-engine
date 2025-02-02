@@ -6,6 +6,7 @@
 #include <seal/vector2.hpp>
 #include <seal/texture.hpp>
 #include <seal/shader.hpp>
+#include <optional>
 
 // Base class for all 2d sprites
 class Sprite2D {
@@ -13,9 +14,9 @@ public:
 	// Sprite Variables
 	Vector2 position;
 	Vector2 velocity;
-	bool gravity;
+	bool gravity = false;
 	// Sprite Texture
-	Texture* texture = nullptr;
+Texture* texture = nullptr;
 	// Sprite Shader
 	Shader* shader = nullptr;
 	// Sprite Functions
@@ -32,7 +33,7 @@ public:
 unsigned addSprite2D(Sprite2D* sprite);
 
 // Gets a 2d sprite by id from the scene
-// Returns a pointer to the sprite or a nullptr if the sprite doesn't exist
-Sprite2D* getSprite2D(unsigned id);
+// Returns an optional pointer to the requested Sprite2D
+std::optional<Sprite2D*> getSprite2D(unsigned id);
 
 #endif	// SealEngineSprite2D
