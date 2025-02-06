@@ -2,6 +2,15 @@
 #ifndef SealEngine
 #define SealEngine
 
+// Includes
+#include <SFML/Graphics.hpp>
+
+// Render Window
+sf::RenderWindow window;
+
+// Render Target (Default RenderTarget)
+sf::RenderTexture target;
+
 /* All times are in seconds ("delta" for example) */
 
 // Game initialization

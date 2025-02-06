@@ -15,25 +15,21 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-# Default Seal Engine Game Name
-if(NOT SealEngineGame)
-    set(SealEngineGame "SealEngineGame")
-endif()
-# Add Seal Engine Executable
-add_executable(${SealEngineGame})
+# Add Seal Engine Library
+add_library(SealEngine)
 # Enable C++17
-target_compile_features(${SealEngineGame} PRIVATE
+target_compile_features(SealEngine PRIVATE
     cxx_std_17
 )
 # Link SFML
-target_link_libraries(${SealEngineGame} PRIVATE
+target_link_libraries(SealEngine PRIVATE
     sfml-graphics
 )
 # Include Seal Engine Headers
 include_directories(include)
 # Add Seal Engine Sources
-target_sources(${SealEngineGame} PRIVATE
+target_sources(SealEngine PRIVATE
     src/Engine.cpp
 )
-# Install Seal Engine Game
-install(TARGETS ${SealEngineGame})
+# Install Seal Engine
+install(TARGETS SealEngine)
