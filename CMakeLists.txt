@@ -26,7 +26,7 @@ target_link_libraries(SealEngine PRIVATE
     sfml-graphics
 )
 # Include Seal Engine Headers
-include_directories(include)
+target_include_directories(SealEngine PUBLIC include)
 # Add Seal Engine Sources
 target_sources(SealEngine PRIVATE
     src/Engine.cpp
