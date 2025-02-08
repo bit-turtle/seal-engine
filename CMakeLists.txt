@@ -22,11 +22,16 @@ target_include_directories(SealEngine PUBLIC ${SFML_SOURCE_DIR}/include)
 target_compile_features(SealEngine PRIVATE
     cxx_std_17
 )
+# Link SFML
+target_link_libraries(SealEngine PRIVATE
+    sfml-graphics
+)
 # Include Seal Engine Headers Publicly
 target_include_directories(SealEngine PUBLIC include)
 # Add Seal Engine Sources
 target_sources(SealEngine PRIVATE
     src/Engine.cpp
+    src/Sprite.cpp
 )
 # Install Seal Engine
 install(TARGETS SealEngine)

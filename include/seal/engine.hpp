@@ -6,10 +6,10 @@
 #include <SFML/Graphics.hpp>
 
 // Render Window
-sf::RenderWindow window;
+sf::RenderWindow* window;
 
 // Render Target (Default RenderTarget)
-sf::RenderTexture target;
+sf::RenderTexture* target;
 
 /* All times are in seconds ("delta" for example) */
 

@@ -1,5 +1,5 @@
 // Seal Engine Sprite2D Implementation
-#include <seal/sprite2d.hpp>
+#include <seal/Sprite.hpp>
 
 #include <map>
 

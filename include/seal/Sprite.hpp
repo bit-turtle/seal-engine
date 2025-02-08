@@ -3,22 +3,16 @@
 #define SealEngineSprite2D
 
 // Includes
-#include <seal/vector2.hpp>
-#include <seal/texture.hpp>
-#include <seal/shader.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <optional>
 
 // Base class for all 2d sprites
 class Sprite2D {
 public:
 	// Sprite Variables
-	Vector2 position;
-	Vector2 velocity;
-	bool gravity = false;
-	// Sprite Texture
-Texture* texture = nullptr;
-	// Sprite Shader
-	Shader* shader = nullptr;
+	sf::Vector2f position;
+	sf::Vector2f velocity;
+	bool gravity;
 	// Sprite Functions
 	Sprite2D() {
 		// Sprite initialization
