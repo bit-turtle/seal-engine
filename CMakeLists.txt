@@ -17,8 +17,6 @@ FetchContent_MakeAvailable(SFML)
 
 # Add Seal Engine Library
 add_library(SealEngine)
-# Include SFML Headers Publicly
-target_include_directories(SealEngine PUBLIC ${SFML_SOURCE_DIR}/include)
 # Enable C++17
 target_compile_features(SealEngine PRIVATE
     cxx_std_17
