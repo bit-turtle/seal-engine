@@ -20,7 +20,23 @@ int main() {
         window.create(sf::VideoMode({640,360}), "Seal Engine Game");
     }
     while (window.isOpen()) {
-        // Main Loop
+        // Poll Events
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // Update
+        frame(1);
+
+        // Render
+        window.clear(sf::Color::Black);
+
+        // Draw Stuff
+
+        window.display();
     }
     return EXIT_SUCCESS;
 }
