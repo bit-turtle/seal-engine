@@ -1,42 +1,44 @@
 // Seal Engine Implementation
 #include <seal/Engine.hpp>
 
-sf::RenderWindow window;
+sf::RenderWindow* window = nullptr;
 sf::RenderWindow* getWindow() {
-    return &window;
+    return window;
 }
 
-sf::RenderTexture target;
+sf::RenderTexture* target = nullptr;
 sf::RenderTexture* getTarget() {
-    return &target;
+    return target;
 }
 
 // Main Function
 int main() {
     // Game Initialization
     init();
-    // Default window if not created
-    if (!window.isOpen()) {
-        window.create(sf::VideoMode({640,360}), "Seal Engine Game");
-    }
-    while (window.isOpen()) {
+    // Default Window Creation
+    if (window == nullptr)
+        window = new sf::RenderWindow(sf::VideoMode({640,360}), "Seal Engine Game");
+    // Game Initialization
+    sf::Clock clock;
+    while (window->isOpen()) {
+        // Process Deltatime
+        sf::Time delta = clock.restart();
         // Poll Events
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
+        while (const std::optional event = window->pollEvent()) {
+                if (event->is<sf::Event::Closed>())
+                    window->close();
         }
 
-        // Update
-        frame(1);
+        // Update Game
+        frame(delta);
 
         // Render
-        window.clear(sf::Color::Black);
+        window->clear(sf::Color::Black);
 
         // Draw Stuff
+        
 
-        window.display();
+        window->display();
     }
     return EXIT_SUCCESS;
 }

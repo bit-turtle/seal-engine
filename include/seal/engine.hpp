@@ -3,6 +3,7 @@
 #define SealEngine
 
 // Includes
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
 // Render Window
@@ -16,6 +17,6 @@ sf::RenderTexture* getTarget();
 // Game initialization
 void init();
 // Code to run every frame
-void frame(float delta);
+void frame(sf::Time delta);
 
 #endif	// SealEngine
